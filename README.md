@@ -11,20 +11,19 @@ Deve-se criar variavel de ambiente com o valor:
 * NUMERO_REGISTRO_POR_PAGINA=5
 
 ## Como utilizar
-No handler basta informar a URI da página, exemplo **/produtos**
-e o **número total de registros** no banco de dados, também deve ser necessário informar 
+No handler basta informar o **número total de registros** no banco de dados, também deve ser necessário informar 
 o **objeto de requisição: http.Request**  que será necessário para recuperar qual página foi selecionada.
 
 Exemplo: 
 
 ```
-uri := "/produtos"
 numeroTotalRegistro := models.ObterNumeroProdutos()
-htmlPaginacao, offset, err := library.CriarPaginacao(uri, numeroTotalRegistro, r)
+htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
 ```
 
-A função ```CriarPaginacao(uri, numeroTotalRegistro, r)``` irá retornar três informações:
-* O Html da páginação que deverá ser impresso na tela, ela contém o html da páginação e deve ser informado usando a função **emplate.HTML()** do pacote **"html/template"**, exemplo: 
+A função ```CriarPaginacao(numeroTotalRegistro, r)``` irá retornar três informações:
+* O Html da páginação que deverá ser impresso na tela, ela contém o html da páginação e deve ser informado como parametro 
+usando a função **emplate.HTML()** do pacote **"html/template"**, exemplo: 
 
 ```
 parameters := struct {
@@ -45,9 +44,8 @@ Por fim o handler deve ser semelhante ao exemplo abaixo:
 
 ```
 func ProdutoHandler(w http.ResponseWriter, r *http.Request) {
-	uri := "/produtos"
 	numeroTotalRegistro := models.ObterNumeroProdutos()
-	htmlPaginacao, offset, err := library.CriarPaginacao(uri, numeroTotalRegistro, r)
+	htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
 
 	var listaProdutos []models.Produto
 
