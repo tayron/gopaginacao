@@ -52,7 +52,7 @@ func CriarPaginacao(numeroTotalRegistro int, r *http.Request) (htmlMenu string, 
 			break
 		}
 
-		if numeroMenuCriado >= numeroPaginasParaSeremCriadas {
+		if numeroMenuCriado > numeroPaginasParaSeremCriadas {
 			break
 		}
 
