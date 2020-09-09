@@ -1,5 +1,5 @@
 # Go Paginação
-Biblioteca para gerar paginação utilizando modelo bootstrap twitter 4
+Biblioteca para gerar paginação
 
 ![Alt text](/print.png?raw=true)
 
@@ -7,11 +7,22 @@ Biblioteca para gerar paginação utilizando modelo bootstrap twitter 4
 Para importar basta execuar o comando: ```go get -u github.com/tayron/go-paginacao```
 
 ## Configuração
-Deve-se criar variavel de ambiente com o valor:
-* NUMERO_REGISTRO_POR_PAGINA=5
+Deve-se criar variavel de ambiente com o valor ```NUMERO_REGISTRO_POR_PAGINA=5``` portanto recomenda-se criação de um arquivo ```.env``` 
+para este tipo de configuração.
+
+## Alterando template
+Caso deseja-se alterar o template, deve-se realizar um fork deste projeto e alterar o template no arquivo **gopaginacao.go**. 
+No inicio do arquivo segue as constances com layout que seguem modelo de paginação do Twitter Bootstrap 4 (https://getbootstrap.com/docs/4.0/components/pagination)
+
+```
+const estruturaContainerMenu = "<nav><ul class='pagination'>%s</ul></nav>Você está na página %d, exibindo %d de %d registros"
+const estruturaItemMenu = "<li class='page-item'><a class='page-link' href='%s'>%s</a></li>"
+const estruturaItemMenuSelecionado = "<li class='page-item active'><a class='page-link' href='%s'>%s</a></li>"
+const estruturaItemMenuDesabilitado = "<li class='page-item disabled'><a class='page-link' href='%s'>%s</a></li>"
+```
 
 ## Como utilizar
-No handler basta informar o **número total de registros** no banco de dados, também deve ser necessário informar 
+No handler basta informar o **número total de registros** que existe no banco de dados, também deve ser necessário informar 
 o **objeto de requisição: http.Request**  que será necessário para recuperar qual página foi selecionada.
 
 Exemplo: 
