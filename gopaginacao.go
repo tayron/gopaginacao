@@ -3,6 +3,7 @@ package gopaginacao
 import (
 	"errors"
 	"fmt"
+	"math"
 	"net/http"
 	"os"
 	"strconv"
@@ -27,7 +28,8 @@ func CriarPaginacao(numeroTotalRegistro int, r *http.Request) (htmlMenu string, 
 		paginaAtual = 1
 	}
 
-	var numeroPaginasParaSeremCriadas int = (numeroTotalRegistro / numeroRegistroPorPagina)
+	var numeroPaginas float64 = float64(numeroTotalRegistro) / float64(numeroRegistroPorPagina)
+	var numeroPaginasParaSeremCriadas int = int(math.Ceil(numeroPaginas))
 
 	if paginaAtual > numeroPaginasParaSeremCriadas {
 		return "", 0, errors.New("Página solicitada é maior do que existente")
