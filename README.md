@@ -13,7 +13,7 @@ para este tipo de configuração.
 
 ## Alterando template
 Caso deseja-se alterar o template, deve-se realizar um fork deste projeto e alterar o template no arquivo **gopaginacao.go**. 
-No inicio do arquivo segue as constances com layout que seguem modelo de paginação do Twitter Bootstrap 4 (https://getbootstrap.com/docs/4.0/components/pagination)
+No inicio do arquivo segue as constantes com layout que seguem modelo de paginação do Twitter Bootstrap 4 (https://getbootstrap.com/docs/4.0/components/pagination)
 
 ```
 const estruturaContainerMenu = "<nav><ul class='pagination'>%s</ul></nav>Você está na página %d, exibindo %d de %d registros"
