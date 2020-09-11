@@ -5,7 +5,7 @@ Biblioteca para gerar paginação
 ![Alt text](/print.png?raw=true)
 
 ## Importação
-Para importar basta execuar o comando: ```go get -u github.com/tayron/go-paginacao```
+Para importar basta execuar o comando: ```go get -u github.com/tayron/gopaginacao```
 
 ## Configuração
 Deve-se criar variavel de ambiente com o valor ```NUMERO_REGISTRO_POR_PAGINA=5``` portanto recomenda-se criação de um arquivo ```.env``` 
