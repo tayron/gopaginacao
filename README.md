@@ -30,7 +30,7 @@ Exemplo:
 
 ```
 numeroTotalRegistro := models.ObterNumeroProdutos()
-htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
+htmlPaginacao, offset, err := gopaginacao.CriarPaginacao(numeroTotalRegistro, r)
 ```
 
 A função ```CriarPaginacao(numeroTotalRegistro, r)``` irá retornar três informações:
