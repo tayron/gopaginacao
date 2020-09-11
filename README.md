@@ -57,7 +57,7 @@ Por fim o handler deve ser semelhante ao exemplo abaixo:
 ```
 func ProdutoHandler(w http.ResponseWriter, r *http.Request) {
 	numeroTotalRegistro := models.ObterNumeroProdutos()
-	htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
+	htmlPaginacao, offset, err := gopaginacao.CriarPaginacao(numeroTotalRegistro, r)
 
 	var listaProdutos []models.Produto
 
