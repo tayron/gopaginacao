@@ -76,7 +76,13 @@ func CriarPaginacao(numeroTotalRegistro int, r *http.Request) (htmlMenu string, 
 	}
 
 	offset = (paginaAtual - 1) * numeroRegistroPorPagina
-	return fmt.Sprintf(estruturaContainerMenu, linksCriados, paginaAtual, numeroRegistroPorPagina, numeroTotalRegistro), offset, nil
+
+	numeroRegistroSendoExibido := numeroRegistroPorPagina
+	if numeroRegistroPorPagina >= numeroTotalRegistro {
+		numeroRegistroSendoExibido = numeroTotalRegistro
+	}
+
+	return fmt.Sprintf(estruturaContainerMenu, linksCriados, paginaAtual, numeroRegistroSendoExibido, numeroTotalRegistro), offset, nil
 }
 
 func montarLink(r *http.Request, numeroPagina int) string {
