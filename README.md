@@ -5,7 +5,7 @@ Biblioteca para gerar paginação
 ![Alt text](/print.png?raw=true)
 
 ## Importação
-Para importar basta execuar o comando: ```go get -u github.com/tayron/go-paginacao```
+Para importar basta execuar o comando: ```go get -u github.com/tayron/gopaginacao```
 
 ## Configuração
 Deve-se criar variavel de ambiente com o valor ```NUMERO_REGISTRO_POR_PAGINA=5``` portanto recomenda-se criação de um arquivo ```.env``` 
@@ -13,7 +13,7 @@ para este tipo de configuração.
 
 ## Alterando template
 Caso deseja-se alterar o template, deve-se realizar um fork deste projeto e alterar o template no arquivo **gopaginacao.go**. 
-No inicio do arquivo segue as constances com layout que seguem modelo de paginação do Twitter Bootstrap 4 (https://getbootstrap.com/docs/4.0/components/pagination)
+No inicio do arquivo segue as constantes com layout que seguem modelo de paginação do Twitter Bootstrap 4 (https://getbootstrap.com/docs/4.0/components/pagination)
 
 ```
 const estruturaContainerMenu = "<nav><ul class='pagination'>%s</ul></nav>Você está na página %d, exibindo %d de %d registros"
@@ -30,7 +30,7 @@ Exemplo:
 
 ```
 numeroTotalRegistro := models.ObterNumeroProdutos()
-htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
+htmlPaginacao, offset, err := gopaginacao.CriarPaginacao(numeroTotalRegistro, r)
 ```
 
 A função ```CriarPaginacao(numeroTotalRegistro, r)``` irá retornar três informações:
@@ -57,7 +57,7 @@ Por fim o handler deve ser semelhante ao exemplo abaixo:
 ```
 func ProdutoHandler(w http.ResponseWriter, r *http.Request) {
 	numeroTotalRegistro := models.ObterNumeroProdutos()
-	htmlPaginacao, offset, err := library.CriarPaginacao(numeroTotalRegistro, r)
+	htmlPaginacao, offset, err := gopaginacao.CriarPaginacao(numeroTotalRegistro, r)
 
 	var listaProdutos []models.Produto
 
